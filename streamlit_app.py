@@ -1,6 +1,6 @@
 # Import python packages
 import streamlit as st
-from snowflake.snowpark.context import get_active_session
+
 from snowflake.snowpark.functions import col,when_matched
 # Write directly to the app
 st.title(" Custom smoothies order form :cup_with_straw:")
@@ -14,7 +14,8 @@ st.write(
 name_of_order = st.text_input('Name of Smoothies: ')
 st.write('Name of Smoothies will be: ', name_of_order)
 
-session = get_active_session()
+cnx=st.connection("snowflake")
+session=cnx.session()
 my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT_NAME'))
 st.dataframe(data=my_dataframe, use_container_width=True)
 
