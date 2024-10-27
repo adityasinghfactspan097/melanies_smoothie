@@ -49,7 +49,7 @@ if time_to_insert:
     
     st.success('your Smoothie is orderd!', icon='✅')
 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+fruityvice_response = requests.get("https://world.openfoodfacts.org/api/v3/product/737628064502.json")
 
 fv_df=st.dataframe(data=fruityvice_response.json(),use_container_width=True)
 
