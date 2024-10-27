@@ -1,6 +1,6 @@
 # Import python packages
 import streamlit as st
-
+import requests
 from snowflake.snowpark.functions import col,when_matched
 # Write directly to the app
 st.title(" MY PARENTS NEW HEALTHY DINER")
@@ -49,3 +49,6 @@ if time_to_insert:
     
     st.success('your Smoothie is orderd!', icon='✅')
 
+
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response)
